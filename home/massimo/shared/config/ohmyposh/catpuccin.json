@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "os": "#ACB0BE",
+    "closer": "p:os",
+    "pink": "#F5C2E7",
+    "lavender": "#B4BEFE",
+    "blue": "#89B4FA",
+    "yellow": "#f9e2af",
+    "green": "#a6e3a1",
+    "teal": "#94e2d5",
+    "red": "#f38ba8",
+    "maroon": "#eba0ac",
+    "sky": "#89dceb"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "newline": true,
+      "type": "prompt",
+      "segments": [
+        {
+          "foreground": "p:os",
+          "style": "plain",
+          "template": "{{.OS}} ",
+          "type": "text"
+        },
+        {
+          "foreground": "p:pink",
+          "properties": {
+            "folder_icon": "...",
+            "home_icon": "~",
+            "style": "agnoster_short",
+            "max_depth": 3
+          },
+          "style": "plain",
+          "template": "{{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "foreground": "p:lavender",
+          "properties": {
+            "branch_icon": "\ue725 ",
+            "cherry_pick_icon": "\ue29b ",
+            "commit_icon": "\uf417 ",
+            "fetch_status": false,
+            "fetch_upstream_icon": false,
+            "merge_icon": "\ue727 ",
+            "no_commits_icon": "\uf0c3 ",
+            "rebase_icon": "\ue728 ",
+            "revert_icon": "\uf0e2 ",
+            "tag_icon": "\uf412 "
+          },
+          "template": "{{ .HEAD }} ",
+          "style": "plain",
+          "type": "git"
+        }
+      ]
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "type": "prompt",
+      "segments": [
+        {
+          "style": "plain",
+          "foreground_templates": [
+            "{{if gt .Code 0}}p:maroon{{end}}",
+            "{{if eq .Code 0}}p:teal{{end}}"
+          ],
+          "template": "❯",
+          "background": "transparent",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "overflow": "hidden",
+      "type": "rprompt",
+      "segments": [
+        {
+          "background": "transparent",
+          "foreground": "p:yellow",
+          "style": "plain",
+          "template": "{{ .FormattedMs }}",
+          "type": "executiontime",
+          "properties": {
+            "threshold": 5000
+          }
+        }
+      ]
+    }
+  ],
+  "transient_prompt": {
+    "foreground_templates": [
+      "{{if gt .Code 0}}p:maroon{{end}}",
+      "{{if eq .Code 0}}p:teal{{end}}"
+    ],
+    "template": "❯ ",
+    "background": "transparent",
+    "type": "text"
+  },
+  "secondary_prompt": {
+    "foreground": "p:teal",
+    "background": "transparent",
+    "template": "❯❯ "
+  },
+  "final_space": true,
+  "version": 2
+}
