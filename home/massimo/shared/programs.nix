@@ -12,6 +12,7 @@ in
 		  la="eza -a --icons --color=always --group-directories-first";
 		  hms="home-manager switch --flake /home/massimo/.dotfiles/.#massimo@yoru";
 		  edithm="nvim /home/massimo/.dotfiles/home/massimo/shared/home.nix";
+      lg="lazygit";
 	  };
     antidote = {
       enable = true;
