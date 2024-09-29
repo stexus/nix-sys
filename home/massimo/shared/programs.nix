@@ -28,9 +28,6 @@ in
           "zsh-users/zsh-history-substring-search"
       ];
     };
-    sessionVariables = {
-      LS_COLORS = "$(vivid generate catppuccin-mocha)";
-    };
     # init ohmyposh and get the yazi alias
     initExtra = ''
           function n() {
@@ -42,6 +39,7 @@ in
           	rm -f -- "$tmp"
           }
           eval "$(oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/ohmyposh/catpuccin.json)"  2>/dev/null
+          export LS_COLORS="$(vivid generate catppuccin-mocha)"
     ''; 
 	};
  # programs.oh-my-posh = {
