@@ -4,7 +4,8 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "massimo";
-  home.homeDirectory = "/home/massimo";
+  #this will be set within each host 
+  #home.homeDirectory = "/home/massimo"
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

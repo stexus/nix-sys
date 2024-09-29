@@ -10,10 +10,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, ...}@input : {
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, ...}@input:
+  let
+    system = "x86_64-linux";
+  in
+  {
     nixosConfigurations = {
     	yoru = nixpkgs.lib.nixosSystem {
-        	system = "x86_64-linux";
+        	inherit system;
         	modules = [
 	          ./configuration.nix
         	  nixos-wsl.nixosModules.default
@@ -26,13 +30,13 @@
     };
     homeConfigurations = {
     	"massimo@yoru" = home-manager.lib.homeManagerConfiguration {
-		pkgs = nixpkgs.legacyPackages."x86_64-linux";
+		pkgs = nixpkgs.legacyPackages.${system};
         	modules = [
-		  ./home/massimo/yoru.nix
+		        ./home/massimo/yoru.nix
         	];
 	};
     	"massimo@tsuki" = home-manager.lib.homeManagerConfiguration {
-		pkgs = nixpkgs.legacyPackages."x86_64-linux";
+		pkgs = nixpkgs.legacyPackages.${system};
         	#modules = [
 		#  ./home/massimo/tsuki.nix
         	#];

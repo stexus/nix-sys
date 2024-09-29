@@ -10,8 +10,9 @@ in
 		  ls="eza --icons --color=always --group-directories-first";
 		  ll="eza -alF --icons --color=always --group-directories-first";
 		  la="eza -a --icons --color=always --group-directories-first";
-		  hms="home-manager switch --flake /home/massimo/.dotfiles/.#massimo@yoru";
-		  edithm="nvim /home/massimo/.dotfiles/home/massimo/shared/home.nix";
+		  hms="home-manager switch --flake ${config.home.homeDirectory}/.dotfiles/.#massimo@yoru";
+      # cnix -> change nix
+		  cnix="nvim ${config.home.homeDirectory}/.dotfiles/";
       lg="lazygit";
 	  };
     antidote = {
@@ -40,7 +41,7 @@ in
           	fi
           	rm -f -- "$tmp"
           }
-          eval "$(oh-my-posh init zsh --config /home/massimo/.config/ohmyposh/catpuccin.json)"  2>/dev/null
+          eval "$(oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/ohmyposh/catpuccin.json)"  2>/dev/null
     ''; 
 	};
  # programs.oh-my-posh = {
@@ -54,15 +55,6 @@ in
     enableZshIntegration = true;
   };
 
-  programs.ssh = {
-  	enable = true;
-	addKeysToAgent = "yes";
-	matchBlocks = {
-		"github.com" = let host = "yoru"; in {
-			identityFile = "/home/massimo/.ssh/${host}_ed25519";
-		};
-	};
-  };
   programs.git = {
     enable = true;
     userEmail = "massimo.tseng@gmail.com";
