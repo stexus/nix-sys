@@ -29,6 +29,7 @@ in
     sessionVariables = {
       LS_COLORS = "$(vivid generate catppuccin-mocha)";
     };
+    # init ohmyposh and get the yazi alias
     initExtra = ''
           function n() {
           	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -38,13 +39,14 @@ in
           	fi
           	rm -f -- "$tmp"
           }
-    '';
+          eval "$(oh-my-posh init zsh --config /home/massimo/.config/ohmyposh/catpuccin.json)"  2>/dev/null
+    ''; 
 	};
-  programs.oh-my-posh = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${cfg_dir}/ohmyposh/catpuccin.json"));
-  };
+ # programs.oh-my-posh = {
+ #    enable = true;
+ #    enableZshIntegration = true;
+ #    settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${cfg_dir}/ohmyposh/catpuccin.json"));
+ #  };
 
   programs.zoxide = {
     enable = true;
@@ -59,6 +61,11 @@ in
 			identityFile = "/home/massimo/.ssh/${host}_ed25519";
 		};
 	};
+  };
+  programs.git = {
+    enable = true;
+    userEmail = "massimo.tseng@gmail.com";
+    userName = "Massimo Tseng";
   };
 
   programs.fzf = {
