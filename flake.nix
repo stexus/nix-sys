@@ -19,7 +19,7 @@
     	yoru = nixpkgs.lib.nixosSystem {
         	inherit system;
         	modules = [
-	          ./configuration.nix
+	          ./nixos/configuration.nix
         	  nixos-wsl.nixosModules.default
         	  {
         	    system.stateVersion = "24.05";
