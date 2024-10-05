@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = (configLib.scanPaths ./.);
+  imports = (umport ./.);
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "massimo";
@@ -20,6 +20,8 @@
      EDITOR = "nvim";
      VISUAL = "nvim";
   };
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
   # # The home.packages option allows you to install Nix packages into your
   # # environment.

@@ -4,15 +4,22 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nypkgs = {
+    	url = "github:yunfachi/nypkgs";
+    	inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, ...}@input:
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, nypkgs, ...}@input:
   let
     system = "x86_64-linux";
+    specialArgs = {
+    	inherit (import ./lib {inherit lib;}) umport;
+    };
   in
   {
     nixosConfigurations = {
