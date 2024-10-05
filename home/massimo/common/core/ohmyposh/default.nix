@@ -1,9 +1,11 @@
-{...}:
+{config, ...}:
+let symLink = config.lib.file.mkOutOfStoreSymlink;
+in
 {
   xdg.configFile = {
   	"ohmyposh" = {
         	recursive = true;
-        	source = symLink "${cfg_dir}/ohmyposh";
+        	source = symLink ././config;
         };
   };
 }

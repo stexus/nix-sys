@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, cfglib, ... }:
 
 {
-  imports = (umport ./.);
+  imports = (cfglib.scanPaths ./.);
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "massimo";

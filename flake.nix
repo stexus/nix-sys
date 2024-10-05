@@ -14,11 +14,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, nypkgs, ...}@input:
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, nypkgs,...}@input:
   let
     system = "x86_64-linux";
+    inherit (nixpkgs) lib;
     specialArgs = {
-    	inherit (import ./lib {inherit lib;}) umport;
+    	cfglib = import ./lib {inherit lib;};
     };
   in
   {
@@ -37,6 +38,7 @@
     };
     homeConfigurations = {
     	"massimo@yoru" = home-manager.lib.homeManagerConfiguration {
+		extraSpecialArgs = specialArgs;
 		pkgs = nixpkgs.legacyPackages.${system};
         	modules = [
 		        ./home/massimo/yoru.nix

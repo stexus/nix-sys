@@ -1,6 +1,8 @@
 {config, ...}:
+let symLink = config.lib.file.mkOutOfStoreSymlink;
+in
 {
   home.file = {
-    ".tmux.conf".source = symLink "${cfg_dir}/.tmux.conf";
+    ".tmux.conf".source = symLink ./.tmux.conf;
   };
 }
