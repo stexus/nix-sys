@@ -57,7 +57,7 @@
           #tokyonight-nvim
           trouble-nvim
           vim-illuminate
-          vim-startuptime
+          #vim-startuptime
           which-key-nvim
           { name = "LuaSnip"; path = luasnip; }
           { name = "catppuccin"; path = catppuccin-nvim; }
