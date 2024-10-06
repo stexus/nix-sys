@@ -6,6 +6,7 @@
     extraPackages = with pkgs; [
       # LazyVim
       lua-language-server
+      rust-analyzer
       stylua
       # Telescope
       ripgrep
@@ -39,6 +40,8 @@
           neodev-nvim
           noice-nvim
           nui-nvim
+          nvim-autopairs
+          tmux-navigator
           nvim-cmp
           nvim-lint
           nvim-lspconfig
@@ -93,6 +96,7 @@
             -- The following configs are needed for fixing lazyvim on nix
             -- force enable telescope-fzf-native.nvim
             { "nvim-telescope/telescope-fzf-native.nvim", enabled = true },
+            { import = "plugins" },
             -- disable mason.nvim, use programs.neovim.extraPackages
             { "williamboman/mason-lspconfig.nvim", enabled = false },
             { "williamboman/mason.nvim", enabled = false },
@@ -117,6 +121,7 @@
         paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
           c
           lua
+          rust
         ])).dependencies;
       };
     in
