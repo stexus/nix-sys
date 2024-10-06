@@ -17,7 +17,7 @@
     antidote = {
       enable = true;
       plugins = [
-          "softmoth/zsh-vim-mode"
+          "jeffreytse/zsh-vi-mode"
           "MichaelAquilina/zsh-you-should-use"
           "romkatv/zsh-bench kind:path"
           "olets/zsh-abbr    kind:defer"
