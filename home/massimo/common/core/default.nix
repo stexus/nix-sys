@@ -46,6 +46,10 @@
     sesh
     #neovim
     gcc
+    
+    #TODO: move this to optional
+    rust-bin.stable.latest.default
+    #rust-bin.selectLatestNightlyWith (toolchain: toolchain.default)
     oh-my-posh
     lua
     lazygit

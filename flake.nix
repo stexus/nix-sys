@@ -4,17 +4,17 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    nypkgs = {
-    	url = "github:yunfachi/nypkgs";
-    	inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, nypkgs,...}@input:
+  outputs = { self, nixpkgs, home-manager, ...}@inputs:
   let
     system = "x86_64-linux";
     inherit (nixpkgs) lib;
@@ -28,7 +28,7 @@
         	inherit system;
         	modules = [
 	          ./nixos/configuration.nix
-        	  nixos-wsl.nixosModules.default
+        	  inputs.nixos-wsl.nixosModules.default
         	  {
         	    system.stateVersion = "24.05";
         	    wsl.enable = true;
@@ -39,7 +39,7 @@
     homeConfigurations = {
     	"massimo@yoru" = home-manager.lib.homeManagerConfiguration {
 		extraSpecialArgs = specialArgs // {host = "yoru";};
-		pkgs = nixpkgs.legacyPackages.${system};
+		pkgs = nixpkgs.legacyPackages.${system} // {overlays = [(import inputs.rust-overlay)];};
         	modules = [
 		        ./home/massimo/yoru.nix
         	];
