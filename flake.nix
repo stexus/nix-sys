@@ -38,7 +38,7 @@
     };
     homeConfigurations = {
     	"massimo@yoru" = home-manager.lib.homeManagerConfiguration {
-		extraSpecialArgs = specialArgs;
+		extraSpecialArgs = specialArgs // {host = "yoru";};
 		pkgs = nixpkgs.legacyPackages.${system};
         	modules = [
 		        ./home/massimo/yoru.nix
