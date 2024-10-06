@@ -22,6 +22,12 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
   environment.systemPackages = with pkgs; [
      git
      neovim
@@ -39,6 +45,8 @@
   };
   services.openssh = {
   	enable = true;
-	passwordAuthentication = false;
+	  settings = {
+      PasswordAuthentication = false;
+    };
   };
 }
