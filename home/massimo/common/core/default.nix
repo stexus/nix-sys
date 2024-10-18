@@ -54,6 +54,7 @@
     lua
     lazygit
     vivid
+    sesh
     # archives
     zip
     xz
@@ -66,6 +67,6 @@
     which
     tree
     #nix-output-monitor
-    btop 
+    btop
   ];
 }

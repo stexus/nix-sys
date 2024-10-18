@@ -17,7 +17,7 @@
     antidote = {
       enable = true;
       plugins = [
-          "jeffreytse/zsh-vi-mode"
+          #"jeffreytse/zsh-vi-mode"
           "MichaelAquilina/zsh-you-should-use"
           "romkatv/zsh-bench kind:path"
           "olets/zsh-abbr    kind:defer"
@@ -39,6 +39,7 @@
           }
           eval "$(oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/ohmyposh/catpuccin.json)"  2>/dev/null
           export LS_COLORS="$(vivid generate catppuccin-mocha)"
+          bindkey -v
     ''; 
 	};
 
