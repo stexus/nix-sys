@@ -27,14 +27,21 @@
     	yoru = nixpkgs.lib.nixosSystem {
         	inherit system;
         	modules = [
-	          ./nixos/configuration.nix
+	          ./nixos/yoru
         	  inputs.nixos-wsl.nixosModules.default
         	  {
         	    system.stateVersion = "24.05";
         	    wsl.enable = true;
         	  }
         	];
-	};
+	    };
+    	yorunix = nixpkgs.lib.nixosSystem {
+        	inherit system;
+        	modules = [
+	          ./nixos/yorunix
+        	];
+	    };
+     
     };
     homeConfigurations = {
     	"massimo@yoru" = home-manager.lib.homeManagerConfiguration {

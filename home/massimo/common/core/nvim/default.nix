@@ -61,6 +61,8 @@
           trouble-nvim
           vim-illuminate
           #vim-startuptime
+          harpoon2
+          yazi-nvim
           which-key-nvim
           { name = "LuaSnip"; path = luasnip; }
           { name = "catppuccin"; path = catppuccin-nvim; }
